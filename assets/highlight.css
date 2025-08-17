@@ -1,0 +1,212 @@
+:root {
+  --bg: #282828;
+  --fg: #ebdbb2;
+  --red: #fb4934;
+  --green: #b8bb26;
+  --yellow: #fabd2f;
+  --blue: #83a598;
+  --purple: #d3869b;
+  --aqua: #8ec07c;
+  --orange: #fe8019;
+  --gray: #928374;
+}
+
+@font-face {
+  font-family: 'JetBrainsMono';
+  src: url('JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+code{
+  font-family: 'JetBrainsMono', monospace;
+}
+
+pre {
+  font-family: 'JetBrainsMono', monospace;
+  background-color: var(--bg);
+  color: var(--fg);
+  border-top: 1px solid var(--fg);
+  border-bottom: 1px solid var(--fg);
+  padding: 10px 5px;
+  overflow-x: auto;
+}
+
+/* Common styles for all languages */
+code .comment,
+code .doc-comment,
+code .annotation {
+  color: var(--gray);
+  font-style: italic;
+}
+
+code .string,
+code .include,
+code .regex,
+code .escape,
+code .char {
+  color: var(--green);
+}
+
+code .number,
+code .numeric,
+code .boolean,
+code .constant {
+  color: var(--orange);
+}
+
+code .keyword,
+code .keyword.control,
+code .keyword.function,
+code .storage-class {
+  color: var(--red);
+  font-weight: bold;
+}
+
+code .operator,
+code .pointer {
+  color: var(--fg);
+}
+
+code .punctuation,
+code .variable,
+code .field,
+code .module,
+code .delimiter {
+  color: var(--fg);
+}
+
+code .function,
+code .method,
+code .function.call {
+  color: var(--yellow);
+}
+
+code .type,
+code .trait,
+code .struct,
+code .enum,
+code .union {
+  color: var(--blue);
+}
+
+code .builtin,
+code .macro,
+code .preprocessor {
+  color: var(--aqua);
+}
+
+code .self,
+code .keyword.unsafe,
+code .null,
+code .nil,
+code .error {
+  color: var(--red);
+}
+
+code .property,
+code .variable.member {
+  color: var(--blue);
+}
+
+/* --- Language-specific Styling --- */
+
+/* C specific */
+code.c .preprocessor,
+code.cpp .preprocessor {
+  color: var(--aqua);
+}
+
+code.c .storage-class,
+code.cpp .storage-class {
+  color: var(--red);
+  font-weight: bold;
+}
+
+code.c .type.qualifier,
+code.cpp .type.qualifier {
+  color: var(--red);
+  font-weight: bold;
+}
+
+/* LUA Specific */
+code.lua .function.call {
+  color: var(--yellow);
+}
+
+code.lua .keyword.function {
+  color: var(--red);
+  font-weight: bold;
+}
+
+code.lua .self {
+    color: var(--purple);
+    font-style: italic;
+}
+
+/* ZIG Specific */
+code.zig .comptime,
+code.ziggy .comptime {
+  color: var(--purple);
+  font-weight: bold;
+}
+
+code.zig .builtin-function,
+code.ziggy .builtin-function {
+    color: var(--aqua);
+}
+
+code.zig .variable.builtin,
+code.ziggy .variable.builtin {
+    color: var(--purple);
+}
+
+/* RUST Specific */
+code.rust .lifetime,
+code.rs .lifetime {
+  color: var(--green);
+  font-style: italic;
+}
+
+code.rust .macro,
+code.rs .macro {
+    color: var(--aqua);
+}
+
+code.rust .mut,
+code.rs .mut {
+  color: var(--orange);
+  font-style: italic;
+}
+
+code.rust .attribute,
+code.rs .attribute {
+  color: var(--gray);
+}
+
+code.rust .module-path,
+code.rs .module-path {
+    color: var(--fg);
+}
+
+/* Hover effects for interactive elements */
+code .function:hover,
+code .method:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Background highlights */
+code .regex {
+  background-color: rgba(184, 187, 38, 0.1);
+}
+
+code .error {
+  background-color: rgba(251, 73, 52, 0.2);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+code .doc-comment {
+  background-color: rgba(146, 131, 116, 0.1);
+}

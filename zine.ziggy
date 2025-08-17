@@ -1,0 +1,10 @@
+Site {
+    .title = "robin's secret blog",
+    .host_url = "https://rowobin.github.io/",
+    .content_dir_path = "content",
+    .layouts_dir_path = "layouts",
+    .assets_dir_path = "assets",
+    .static_assets = [
+        "JetBrainsMono-Regular.woff2"
+    ],
+}

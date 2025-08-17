@@ -1,0 +1,13 @@
+---
+.title = "test blog post 2",
+.date = @date("2025-08-18"),
+.author = "rowobin",
+.layout = "post.shtml",
+.draft = false,
+--- 
+
+[ ](<$image.asset("gas-station.png") >)
+
+# Test tittle
+
+Test content

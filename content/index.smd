@@ -1,0 +1,17 @@
+---
+.title = "hello, world",
+.date = @date("2025-08-17"),
+.author = "rowobin",
+.layout = "index.shtml",
+.draft = false,
+--- 
+
+[]($section.attrs('two-cols'))
+
+my name is robin. i'm a 20y/o swe from portugal. i'm interested in systems programming, games programming and graphics programming.
+<br><br>
+this is my personal website. feel free to check out my [blog posts](/blog) about projects, interests and opinions.
+<br><br>
+[github](https://github.com/Rowobin) [x/twtr](https://x.com/RobinsSecret)
+
+[](<$image.siteAsset("bus-station.png")>)

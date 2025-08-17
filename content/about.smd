@@ -1,0 +1,51 @@
+---
+.title = "about me",
+.date = @date("2025-08-17"),
+.author = "rowobin",
+.layout = "index.shtml",
+.draft = false,
+--- 
+
+## work
+
+### <green>[company]</green>
+<blue><ins>swe</ins> (jun '25 - present)</blue>
+
+built and mantained unreal engine 5 plugins for a company in the automotive sector.
+
+<blue><ins>intern</ins> (feb '25 - jun '25)</blue>
+
+worked with a designer to build a 3d design system for vr applications in unreal engine 5.
+
+## projects
+### <green>zterm</green>
+<blue><ins>[github link](#)</ins></blue>
+
+a low-level terminal manipulation library in zig.
+
+### <green>chip-8 emulator</green>
+<blue><ins>[github link](#)</ins></blue>
+
+a functional chip-8 emulator written in c with sdl.
+
+## tools
+
+<green>programming languages:</green> zig, c, c++, lua
+
+<green>frameworks/libraries:</green> raylib, sdl
+
+<green>code editors:</green> vscode, neovim (btw)
+
+<green>os:</green> macos (main), windows 11, arch linux
+
+<green>art:</green> aseprite, blender
+
+## contacts
+
+<green>discord:</green> rowobin
+
+<green>x/twtr:</green> @robinssecret
+
+<green>email:</green> secretrobin95@gmail.com
+
+

@@ -1,0 +1,142 @@
+:root {
+  --bg: #282828;
+  --fg: #ebdbb2;
+  --red: #fb4934;
+  --green: #b8bb26;
+  --yellow: #fabd2f;
+  --blue: #83a598;
+  --purple: #d3869b;
+  --aqua: #8ec07c;
+  --orange: #fe8019;
+  --gray: #928374;
+}
+
+blue {
+  color: var(--blue);
+}
+
+green {
+  color: var(--green)
+}
+
+@font-face {
+  font-family: 'JetBrainsMono';
+  src: url('JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1,
+h2
+{
+  color: var(--red);
+}
+
+a {
+  color: var(--yellow);
+}
+
+html {
+  color: var(--fg);
+  font-family: 'JetBrainsMono', monospace;
+  font-size: 1.0em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: var(--bg);
+}
+
+body {
+  width: 800px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-title {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.block {
+  border: 1px dotted var(--fg);
+  padding: 5px 15px;
+  margin: 0 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.block h1 {
+  font-size: 1em;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.small {
+  font-size: 0.8em;
+}
+
+.wave {
+  background: var(--bg);
+  color: var(--fg);
+  text-shadow: 1px 1px 10px var(--fg), 1px 1px 10px var(--gray);
+}
+
+img{
+  image-rendering: pixelated;
+}
+
+footer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer hr {
+  width: 100%;
+  border-color: var(--fg);
+}
+
+/* fake scanlines */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.3) 1px,
+    transparent 1px
+  );
+  background-size: 100% 2px;
+  pointer-events: none;
+  position: fixed
+}
+
+.two-cols {
+  display: flex;
+  flex-direction: row; 
+  gap: 20px;
+  align-items: flex-start;
+}
+
+
+@media (max-width: 600px) {
+  .two-cols {
+    flex-direction: column;
+    align-items: center;
+  }
+}
