@@ -17,14 +17,22 @@ built and mantained unreal engine 5 plugins for a company in the automotive sect
 
 worked with a designer to build a 3d design system for vr applications in unreal engine 5.
 
+## education
+
+### <green>master's in critical computing systems engineering</green>
+<blue><ins>isep</ins> (sep '25 - jun '27)</blue>
+
+### <green>bachelor's in software engineering</green>
+<blue><ins>isep</ins> (sep '22 - jun '25)</blue>
+
 ## projects
 ### <green>zterm</green>
-<blue><ins>[github link](#)</ins></blue>
+<blue><ins>[github link](https://github.com/Rowobin/zterm)</ins></blue>
 
 a low-level terminal manipulation library in zig.
 
 ### <green>chip-8 emulator</green>
-<blue><ins>[github link](#)</ins></blue>
+<blue><ins>[github link](https://github.com/Rowobin/CHIP8-Emulator-C)</ins></blue>
 
 a functional chip-8 emulator written in c with sdl.
 
