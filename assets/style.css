@@ -36,6 +36,10 @@ a {
   color: var(--yellow);
 }
 
+ul li::marker {
+  color: var(--orange);
+}
+
 html {
   color: var(--fg);
   font-family: 'JetBrainsMono', monospace;
@@ -51,6 +55,7 @@ body {
   padding: 15px;
   display: flex;
   flex-direction: column;
+  max-width: 90%;
 }
 
 .site-title {

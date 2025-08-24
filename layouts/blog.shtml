@@ -3,6 +3,7 @@
   <style>
     .date {
       font-size: 0.9em;
+      white-space: nowrap;
     }
 
     .post {
