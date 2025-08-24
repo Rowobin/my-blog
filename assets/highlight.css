@@ -30,6 +30,16 @@ pre {
   border-bottom: 1px solid var(--fg);
   padding: 10px 5px;
   overflow-x: auto;
+
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+  
+  /* Hide scrollbar for IE/Edge */
+  -ms-overflow-style: none;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
 }
 
 /* Common styles for all languages */
