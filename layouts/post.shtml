@@ -18,6 +18,14 @@
       width: 512px;
       max-width: 100%;
     }
+    
+    .big-img{
+      width: 100%;
+    }
+
+    .smooth-img{
+      image-rendering: smooth;
+    }
 
     .post {
       display:flex;
