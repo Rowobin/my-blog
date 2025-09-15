@@ -6,6 +6,8 @@
 .draft = false,
 --- 
 
+[ ]($image.asset("pixel-rice.png"))
+
 ## Introduction
 I spend a lot more time scrolling twitter and reddit than I would like.
 Most of the posts I see are about tech/programming.
