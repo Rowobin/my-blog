@@ -1,0 +1,58 @@
+---
+.title = "how to not abandon a side project",
+.date = @date("2025-12-26"),
+.author = "rowobin",
+.layout = "post.shtml",
+.draft = false,
+--- 
+
+
+I have a problem. A problem most programmers can probably relate to. I keep starting personal projects and then never finishing them.
+I really want to solve this issue. While an unfinished project isn't necessarily a waste of time, I really want to build a nice portfolio
+that I can share with friends or potential employers. It's also a personal thing, I have to prove to myself that I can be disciplined and focused
+enough to actually finish, at the very least, three or four technically impressive projects.
+
+This blog post is an analysis on what I think causes this problem, and on what I plan to do to fix it. I hope other
+people are able to benefit from this information. I am also accepting any advice from people who faced this issue
+and were able to overcome it.
+
+## The problem
+
+Everyone is different, so I'll try to describe what the life cycle of an "abandoned side-project" usually looks like to me.
+
+I usually pick a side project because it "seems interesting" or "looks cool". I'll see someone share something they created on twitter, like
+a cool shader, or a reinforcement learning environment, or a physics engine, and think "I NEED to build something like that!!". After that
+initial burst of inspiration, I'll read a bit about the topic, watch some youtube videos, and start setting up my project.
+
+I start most projects on a friday or on a saturday, and the first weekend of development tends to be pretty good. I feel happy and curious and motivated, I
+write a lot of code and usually have a working prototype for whatever I'm trying to build by the time sunday is over. The problems start to happen a few days after this.
+Sometimes, I tell myself "I'll work on this project after work!", but then I get home from work and I'm way too tired to write any code. Other times, it's not lack of energy,
+it's lack of motivation. I'll realise whatever project I'm building is too complicated for me, that I'm lacking too much foundational knowledge, and lose all will
+to keep working. 
+
+After the above starts happening, it's usually a matter of days/weeks until I private the github repository and send
+the project to the shadow realm of abandoned side projects that will never be looked at ever again.
+
+## The exceptions
+
+I have experience a few exceptions to this problem.
+
+The first exception is my job. I never find it hard to stay motivated and focused when performing a task at work. I always
+manage to finish all of my jira tickers on time. Obviously, a job has much higher stakes than a personal project, if I don't
+do my work I'll simply get fired. That works great as a source of motivation. However, I would make the argument that
+there's other factor that make it easier to stay focused at work. I'll talk more about that in bit.
+
+The second exception would be a few personal projects that I was actually able to finish. In the past, I've build a small emulator in C,
+and a terminal library in Zig. I was able to fully finish both of these projects until I was satisfied with them. 
+
+I studied these exceptions for some time, trying to learn from them. These are the observations I made.
+
+At work, most of my time is spent in an office, a place with few distractions and a strong expectation (from myself and others)
+that I should be working. The tasks assigned to me are small in scope, and there's usually enough documentation
+to make up for gaps in my knowledge. If I ever get stuck in a problem, there's usually at least one senior developer around
+to help.
+
+In the two times I managed to actually finish a project, I was working in a domain I was familiar with (systems programming)
+so there were no knowledge gaps that prevent my progress, and both projects inherently forced me to divide my work
+into independent, small scope tasks (example: for the emulator, implement one instruction at a time and test it).
+## The solution

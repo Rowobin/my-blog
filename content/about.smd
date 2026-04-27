@@ -11,8 +11,7 @@
 ### <green>[company]</green>
 <blue><ins>swe</ins> (jun '25 - present)</blue>
 
-worked as an unreal engine 5 tools developer for a big company in the automative sector. created plugins to
-extend engine capabilities and developed simulation tools.
+worked as an unreal engine 5 tools developer for a big company in the automative sector. created plugins to extend engine capabilities.
 
 <blue><ins>intern</ins> (feb '25 - jun '25)</blue>
 
@@ -24,29 +23,35 @@ worked with a designer to build a 3d design system for 3d and vr applications in
 <blue><ins>isep</ins> (sep '22 - jun '25)</blue>
 
 ## projects
+
+### <green>tiny graphics</green>
+<blue><ins>[github link](https://github.com/Rowobin/tiny_graphics)</ins></blue>
+
+a 2d graphics library for tiny oled screens, written in c.
+
 ### <green>zterm</green>
 <blue><ins>[github link](https://github.com/Rowobin/zterm)</ins></blue>
 
-a low-level terminal manipulation library in zig.
+a low-level terminal manipulation library, written in zig.
 
 ### <green>chip-8 emulator</green>
 <blue><ins>[github link](https://github.com/Rowobin/CHIP8-Emulator-C)</ins></blue>
 
-a functional chip-8 emulator written in c with sdl.
+a fully-functional chip-8 emulator, written in c with sdl.
 
 ## tools
 
 <green>programming languages:</green> c, c++, zig, lua, python
 
-<green>frameworks/libraries:</green> cuda, vulkan, raylib, sokol, sdl, pufferlib
+<green>graphics programming:</green> sdl, vulkan, glsl
 
-<green>game engines:</green> unreal engine 5
+<green>game engines:</green> unreal engine 5, godot
 
-<green>code editors:</green> neovim (btw), zed and rider
+<green>code editors:</green> neovim (btw) and vscode
 
 <green>os:</green> macos, windows 11 and linux (fedora)
 
-<green>art:</green> aseprite, blockbench
+<green>art:</green> aseprite, blender
 
 ## contacts
 
