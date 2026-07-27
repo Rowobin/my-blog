@@ -1,0 +1,64 @@
+---
+.title = "ai/ml grind day 3: foward and backward propagation",
+.date = @date("2026-07-27"),
+.author = "rowobin",
+.layout = "post.shtml",
+.draft = false,
+--- 
+
+## Introduction
+
+These are the notes for day 3 of my AI/ML grind. Today's topic: forward propagation and backwards propagation.
+
+You can also checkout these note's using my [ai-ml-diary repository](https://github.com/Rowobin/ai-ml-diary).
+
+## Linear vs Non-Linear operations
+**Linear:** Addition and multiplication based operations.
+
+**Non-linear:** Anything else.
+
+## The perceptron model
+The perceptron model is used to represent what happens in every node (neuron) of a neural network.
+
+An artificial neuron takes a series of numerical inputs, transforms them using linear and non-linear operations, and outputs a singular value. This process is typically represented using the following formula:
+$$
+y_{prediction} = \sigma(bias + \sum_{i = 1}^n input_i * weight_i)
+$$
+Each input is multiplied by its respective weight variable, with the resulting values being summed together plus the "bias" variable. This sum value is then passed through a non-linear function (like a sigmoid, for example). 
+
+[ ](<$image.asset("perceptron.svg") >)
+
+Every node in a neural network works as described by the perceptron model. They are all independent and unaware of each other. The output of one node is used as the input of another. These mathematical transformations are repeated until a final value is obtained. This process is known as **forward propagation**.
+
+[ ](<$image.asset("forward_prop_nn.svg") >)
+
+## Loss and cost functions
+The value computed by the forward propagation is not always accurate. When testing a model, its predictions are compared with a list of "expected" results and an error value can be calculated.
+
+These error values are used to generate **loss functions**.
+
+**Mean-squared error:** used for continuous data prediction when the output is a numerical prediction (height, temperature, ...).
+$$
+𝓛 = \frac{1}{2}(y_{prediction} - y_{expected})^2
+$$
+**Cross-entropy:** used for categorical data when the output is a probability (chance image is a cat, ...).
+$$
+𝓛 = -(y_{expected}\log(y_{prediction}) + (1-y_{expected}) log(1-y_{prediction}))
+$$
+The sum of multiple loss functions is called a **cost function**.
+$$
+𝓙 = \frac{1}{n} \sum_{i=1}^n{𝓛(y_{prediction_i}, y_{expected_i})}
+$$
+The prediction value (and, by consequence, the loss and cost values) is determined by the weights associated with each node. The goal of training deep learning models is to determine the set of weight values that minimize losses as much as possible.
+
+Typically, models are trained using the cost function over individual loss functions. This is because training on individual losses would be computationally expensive and potentially lead to overfitting.  That said, averaging too many samples may reduce sensitivity. A common solution is to train the model using batches of samples.
+## Backwards propagation
+The goal of backwards propagation is to find the set of weights that minimizes the values of the loss functions as much as possible. This is done by using the gradient descent algorithm for each individual node and its weight.
+$$
+w = w - \frac{η∂𝓛}{∂w}
+$$
+The chain rule propagates the error backward from the output layer through each hidden layer.
+## Some extra things I learned
+**Feature Space:** a geometric representation of the data, where each feature is an axis and each observation point is a coordinate.
+
+**Separating Hyperplane:** a boundary that binarizes and categorizes data. It is used as a "decision boundary".

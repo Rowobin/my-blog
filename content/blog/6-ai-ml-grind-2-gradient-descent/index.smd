@@ -37,7 +37,7 @@ The "error" landscape of any given problem in AI/ML has a mathematical definitio
 
 I implemented 2 variations of the Gradient Descent algorithm: a 1-dimensional variation, and a 2-dimensional variation.
 
-Overall, it's a simple, elegant algorithm that feels intuitive to implement and visualize.
+Overall, it's a simple, elegant algorithm that feels intuitive to implement.
 
 #### **1D Gradient Descent**
 
