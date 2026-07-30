@@ -10,7 +10,7 @@
 
 These are the notes for day 3 of my AI/ML grind. Today's topic: forward propagation and backwards propagation.
 
-You can also checkout these note's using my [ai-ml-diary repository](https://github.com/Rowobin/ai-ml-diary).
+You can also checkout these notes using my [ai-ml-diary repository](https://github.com/Rowobin/ai-ml-diary).
 
 ## Linear vs Non-Linear operations
 **Linear:** Addition and multiplication based operations.
