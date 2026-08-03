@@ -1,0 +1,88 @@
+---
+.title = "ai/ml grind day 5: binary classification",
+.date = @date("2026-08-03"),
+.author = "rowobin",
+.layout = "post.shtml",
+.draft = false,
+--- 
+
+## Introduction
+
+Took some days off to touch grass and spend time with friends. But now I'm back :]
+
+These are the notes for day 5 of my AI/ML grind. Today's topic: binary classification.
+
+You can also checkout these notes using my [ai-ml-diary repository](https://github.com/Rowobin/ai-ml-diary).
+
+## Binary Classification
+
+### The sigmoid function
+
+The sigmoid function is very useful for binary classification. Its outputs, which vary between 0 and 1, can be used as the probability of belonging to a certain class. Since the y value of 0.5 (50% probability) happens at x = 0, in a binary partition, one class should be assigned to the left and thg other to right of the y axis.
+
+It's probably also relevant to note that the sigmoid function is non-linear, which means it can be used as an activation function, allowing neural networks to learn complex patterns.
+
+```python
+x = torch.linspace(-5, 5, 50)
+y = torch.sigmoid(x)
+
+plt.plot(x, y, 'r-')
+plt.xlim([-5, 5])
+plt.show()
+```
+
+[ ](<$image.asset("sigmoid.png") >)
+
+
+### Training a Neural Network for binary classification
+
+Training a model for binary classification is very similar to training a model for linear regression. I actually just copied the code I used for the linear regression model and modified it slightly (I had to add a sigmoid function as the last activation function of the model).
+
+```python
+nn_classifier = nn.Sequential(
+    nn.Linear(2, 1),
+    nn.ReLU(),
+    nn.Linear(1, 1),
+    nn.Sigmoid()
+)
+```
+
+The training loop looks the same as before.
+
+```python
+for epoch in range(training_epochs):
+    # forward pass
+    y_hat = nn_classifier(data)
+
+    # loss function
+    loss = loss_func(y_hat, labels)
+    losses[epoch] = loss
+
+    # backprop
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+```
+
+The model output looks like this. Not bad at all.
+
+[ ](<$image.asset("binary_classification_1.png") >)
+
+
+But there is one problem: if you run this exact model multiple times, you'll notice it produces very inconsistent results. Sometimes, it plateus at 50% accuracy (basically just guessing) and, sometimes, it plateus at 90% accuracy.
+
+[ ](<$image.asset("inconsistent_model.png") >)
+
+
+This happens because of the ReLU function, which is used as the activation function for the first layer of the model. If the results of the first linear function are < 0, ReLU will always output 0. This can confuse the model. Removing this function instantly improves model consistency.
+
+```python
+nn_classifier = nn.Sequential(
+        nn.Linear(2,1),
+        #nn.ReLU(),
+        nn.Linear(1, 1),
+        nn.Sigmoid()
+    )
+```
+
+[ ](<$image.asset("consistent_model.png") >)
