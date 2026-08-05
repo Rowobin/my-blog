@@ -1,0 +1,91 @@
+---
+.title = "ai/ml grind day 6: multi-output nns",
+.date = @date("2026-08-05"),
+.author = "rowobin",
+.layout = "post.shtml",
+.draft = false,
+--- 
+
+## Introduction
+
+I don't have any comments for today: multi-output neural networks are just regular neural networks but with more outputs.
+
+These are the notes for day 6 of my AI/ML grind. Today's topic: multi-output neural networks.
+
+You can also checkout these notes using my [ai-ml-diary repository](https://github.com/Rowobin/ai-ml-diary).
+
+## Multi-ouput neural networks
+
+### Training a Neural Network multi-ouput categorical classification
+
+During day 5, I create a Neural Network capable of binary classification. In order to do binary classification, a Neural Network only needs one output, between 0 and 1, which can be interpreted as the probability of the input matching either class. When doing predictions for more than two possible categories, the number of outputs needs to be increased.
+
+I decided train a model to do predictions using a randomly generated dataset with 3 possible categories:
+
+[ ](<$image.asset("3_categories_graph.png") >)
+
+
+To create a neural network for this task, I wrote the following code:
+
+```python
+model = nn.Sequential(
+    nn.Linear(2, 4),
+    nn.ReLU(),
+    nn.Linear(4, 4),
+    nn.ReLU(),
+    nn.Linear(4, 3)
+    # nn.Sigmoid() no need to declare this! it's included in nn.CrossEntropyLoss
+)
+loss_func = nn.CrossEntropyLoss()
+learning_rate = 0.02
+optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+```
+
+This neural network is basically the base as the previous ones I created, except it has more outputs. The training loop is also nothing special. 
+
+```python
+for epoch in range(training_epochs):
+    # forward pass
+    y_hat = model(data)
+
+    # compute loss
+    loss = loss_func(y_hat, labels)
+    losses[epoch] = loss
+
+    # backprop
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+```
+
+[ ](<$image.asset("3_categories_loss_accuracy.png").attrs('big-img') >)
+
+[ ](<$image.asset("3_categories_result.png") >)
+
+
+### The iris dataset
+
+The iris dataset is a very popular dataset for ml/statistics that 4 parameters (sepal_length, sepal_width, petal_length and petal_width) about 3 species of flowers (setosa, versicolor and virginia). I decided to apply my new knowledge on this dataset. Once again, just is just the same code I have been writing with slight modifications.
+
+```python
+model = nn.Sequential(
+    nn.Linear(4, 64),
+    nn.ReLU(),
+    nn.Linear(64, 64),
+    nn.ReLU(),
+    nn.Linear(64, 3)
+)
+```
+
+[ ](<$image.asset("iris_dataset_results.png").attrs('big-img') >)
+
+
+### How much does model breadth matter?
+
+The amount of layers in a model is called 'model depth' while the amount of hidden units in each layer is referred to as 'model breadth'.
+
+I was curious about what would happen if I varied a the breadth of the model for the iris dataset experiment. This is the data I gathered:
+
+[ ](<$image.asset("iris_dataset_n_hidden.png") >)
+
+It seems that, generally speaking, a larger number of hidden units per layer results on better performing models (assuming everything else is equal).
