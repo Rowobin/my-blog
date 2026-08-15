@@ -1,0 +1,119 @@
+---
+.title = "ai/ml grind day 7: overfitting and generalization",
+.date = @date("2026-08-14"),
+.author = "rowobin",
+.layout = "post.shtml",
+.draft = false,
+--- 
+
+## Introduction
+
+I didn't write any updates during the last few days, my bad. I did not stop my study sessions, but, due to extra work at my job, I stopped having time to write these blog posts down. Hopefully, this situation will not repeat itself.
+
+Anyways, these are some of the notes from my latest study sessions. Today's topic: overfitting and generalization.
+
+You can also checkout these notes using my [ai-ml-diary repository](https://github.com/Rowobin/ai-ml-diary).
+
+## Overfitting and Generalization
+
+### Defining models with a Class
+
+So far, I've been defining neural networks using the nn.Sequential() syntax. From now on, as experiments (and models) get more complex, I'll be defining models using custom classes. Here's an example:
+
+```python
+class NNModel(nn.Module):
+    def __init__(self, n_units, n_layers):
+        super().__init__()
+
+        self.layers = nn.ModuleDict()
+        self.n_layers = n_layers
+
+        self.layers['input'] = nn.Linear(4, n_units)
+
+        for i in range(n_layers):
+            self.layers[f'hidden{i}'] = nn.Linear(n_units, n_units)
+
+        self.layers['output'] = nn.Linear(n_units, 3)
+
+    def forward(self, x):
+        x = self.layers['input'](x)
+        x = F.relu(x)
+
+        for i in range(self.n_layers):
+            x = self.layers[f'hidden{i}'](x)
+            x = F.relu(x)
+
+        x = self.layers['output'](x)
+        return x
+
+    def fit(self, data, labels):
+        loss_func = nn.CrossEntropyLoss()
+        optimizer = torch.optim.SGD(self.parameters(), lr=0.2)
+        training_epochs = 4000
+
+        for epoch in range(training_epochs):
+            y_hat = self.forward(data)
+
+            loss = loss_func(y_hat, labels)
+
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+        predictions = torch.softmax(self.forward(data), dim=1)
+        predictions_labels = predictions.argmax(axis=1)
+        accuracy = 100 * torch.mean((predictions_labels == labels).float())
+
+        return accuracy
+```
+
+These classes make it easier to define, use and re-use more complex model architectures.
+
+```python
+n_layers = torch.linspace(1, 5, 5).int()
+n_hidden = torch.linspace(1, 200, int(200/10)).int()
+accuracies = torch.zeros([len(n_layers), len(n_hidden)])
+
+for layer in range(len(n_layers)):
+    for hidden in range(len(n_hidden)):
+        model = NNModel(hidden, layer)
+        accuracy = model.fit(data, labels)
+        accuracies[layer, hidden] = accuracy
+```
+
+This information isn't super relevant to today's notes, but I still wanted to share it.
+
+### Overfitting vs Underfitting
+
+So far, whenever I trained a model during my experiments, I always test the model on the same data it was trained on. Since my focus was simply to learn about how neural networks work, this is fine. However, in the real world, when trying to solve real problems, testing a model on the same data it was trained on can lead to a phenomenon known as **overfitting**.
+
+Overfitting, in simple terms, means that a model gives really good results on the specific dataset it was trained on, but subpar results on any new datasets.
+
+Many validation methods have been developed to help train models while avoiding overfitting.
+
+### Hold-out validation
+
+The simplest validation method for neural networks is the "hold-out" method. This method consists in spliting the dataset 80-20 and then using the first subset for training the model (the "training set")and the second subset for testing the model (the "test set").
+
+[ ](<$image.asset("holdout.png").attrs('big-img')>)
+
+A common, slightly modified approach to the hold-out method is to create 3 sets: a training set, a development set and a test set. The model is trained on the training set, tested and perfected multiple times based on the development set and, finally, tested a singular time on the test set.
+
+[ ](<$image.asset("holdout_dev.png").attrs('big-img')>)
+
+### K-fold cross-validation
+
+The hold-out validation method has a pretty significant flaw: it relies to much on luck. Different kinds of 80-20 slips might lead to bigger/smaller levels of overfitting.
+
+The **K-fold cross validation** method solves this problem by dividing the dataset in K subsets, and then training the model from-scratch K times, changing which subset acts as the test in each run. 
+
+[ ](<$image.asset("k_cross_validation.png").attrs('big-img')>)
+
+After all training runs are finished, their scores are averaged and this averaged is the "expected" performance of the model for unseen data.
+
+
+### Generalization
+
+The term generalization is used to describe how well a model performs when presented with new, unseen data. For models to be reliable in the real world, this is a very important characteristic.
+
+**Generalization boundaries:** populations we want the model to work on. For example, when handling medical data, we might only be concerned that our models works for "healthy humans above the age of 18".
