@@ -71,7 +71,7 @@ The λ value controls the strength of the penalty. The equation for the penalty 
 
 **L2 Regularization**
 $$
-penalty_{L2} = ||w||^{2}_{2} = \sum_{i}{w^{2}_{i}}
+penalty_{L2} = ||w||^{2}\_{2} = \sum\_{i}{w^{2}\_{i}}
 $$
 
 In L2 regularization, the penalty is calculated using the sum of all squared weights. This encorages small weights without driving values to zero. This technique is useful for generating denser solutions (denser, here, means that every node has a non-zero weight).
@@ -87,7 +87,7 @@ class L2Model(nn.Module):
 
 **L1 Regularization**
 $$
-penalty_{L1} = ||w||_{1} = \sum_{i}{|w_{i}|}
+penalty_{L1} = ||w||\_{1} = \sum\_{i}{|w\_{i}|}
 $$
 
 In L1 regularization, the penalty is calculated using the sum of the absolute value of all weights. This can drive many weights to a value of zero. This technique is useful for generating sparser solutions (certain inputs will be treated as irrelevant/noise).
