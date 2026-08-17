@@ -14,7 +14,7 @@ These are the notes for day 8 of my AI/ML grind. Today's topic: regularization.
 
 You can also checkout these notes using my [ai-ml-diary repository](https://github.com/Rowobin/ai-ml-diary).
 
-# Regularization
+## Regularization
 
 Regularization techniques penalize memorization (over-learning on examples) and help models generalize to unseen data. These techniques:
 - can increase or decrease training time;
@@ -24,7 +24,7 @@ Regularization techniques penalize memorization (over-learning on examples) and 
 
 Regularization techniques work by adding penalizations, constraints or modifications to the training process. There are many ways to regularize a model.
 
-## Node regularization
+### Node regularization
 
 For node regularization, there is the **dropout** method. It works by randomly removing nodes while training a model. This:
 - prevents a single node from learning too much;
@@ -49,7 +49,7 @@ class DropoutModel(nn.Module):
         return x
 ```
 
-## Loss regularization
+### Loss regularization
 
 For loss regularization, there are the L1 and L2 regularization methods. Both follow the same principle, which is that of adding extra penalties to the loss function.
 
@@ -116,7 +116,7 @@ class L1Model(nn.Module):
         # ...
 ```
 
-## Data regularization
+### Data regularization
 
 For data regularization, batch training is used. Batch training consists in dividing the training data into smaller samples (batches) and training the model iteratively on those batches. This works as a regularization method because it smooths learning by averaging the loss over many samples, which reduces overfitting.
 
@@ -154,6 +154,6 @@ class RegModel(nn.Module):
         return train_losses, train_accuracies, test_accuracies
 ```
 
-## Experiments
+### Experiments
 
 In the experiments file for today, I implemented every regularization method that I learned about: drouput, L1/L2 and batch training. I tested these methods on a simple binary classification. This is not the best problem to test these algorithms, but that's ok for now.
