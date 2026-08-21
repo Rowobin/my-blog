@@ -1,0 +1,111 @@
+---
+.title = "ai/ml grind day 9: data and batch normalization",
+.date = @date("2026-08-20"),
+.author = "rowobin",
+.layout = "post.shtml",
+.draft = false,
+--- 
+
+## Introduction
+
+I tried to size the notebook output image's so they will look a bit better when uploaded here. I hope it worked and the difference is noticeable.
+
+These are the notes for day 9 of my AI/ML grind. Today's topic: data and batch normalization.
+
+You can also checkout these notes using my [ai-ml-diary repository](https://github.com/Rowobin/ai-ml-diary).
+
+## Data and batch normalization
+
+### Metaparameters
+
+**Parameters:** Features of the model that are learned by the algorithm (mainly, the weights). You do not set the parameters.
+
+**Metaparameters:** Features of the model that are set by you, not learned by the model (number of hidden layers, batch size, activation functions, dropout rate, etc).
+
+### Data normalization
+
+When there is a big variation in the values of a dataset, the ones of higher magnitude will completely overshadow the smaller ones during backwards propagation. This produces worse models, since it uses an arbitrary criteria to prioritize certain values and ignore others.
+
+The two main techniques for data normalization are **z-transform** and **min-max scaling**.
+
+**Z-Transform**
+
+$$
+x = data
+$$
+$$
+μ = average(data)
+$$
+$$
+σ = standard\_deviation(data)
+$$
+$$
+z = \frac{x - μ}{σ}
+$$
+
+The z-transform is typically used with normally distributed data.
+
+**Min-Max Scaling**
+
+$$
+x̃ = \frac{x - min(x)}{max(x) - min(x)}
+$$
+
+Min-max scaling places values on a scale of 0-1. It's typically used for uniform data and image processing.
+
+### Batch normalization
+
+Batch normalization makes training faster and more stable by adjusting by adjusting the inputs to each layer, recentering them around zero and recaling them to a standard size.
+
+$$
+x̃ = γx + β
+$$
+
+The γ and β values are learned during training.
+
+Batch normalization was first developed with the goal of addressing **internal covariate shift**: the concept that, particularly in deep networks, small changes in shallower hidden layers are amplified as they propagate within the network, resulting in significant changes to deeper layers.
+
+Batch normalization also allows networks to use higher learning rates without causing problems like exploding gradients (when updates become too large).
+
+### Experiments
+
+In order to test the effects of data and batch normalization, I created 3 versions of the same model and trained it on the [wine-quality dataset](https://archive.ics.uci.edu/dataset/186/wine+quality).
+
+**Model Architecture**
+```python
+# Training Epochs: 1000
+# Learning Rate: 0.1
+# Batch Size: 256
+# Train Size: 0.8
+
+class ModelBinary(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.layers = nn.ModuleDict();
+
+        self.layers['input'] = nn.Linear(11, 16)
+        self.layers['hidden1'] = nn.Linear(16, 32)
+        self.layers['hidden2'] = nn.Linear(32, 32)
+        self.layers['output'] = nn.Linear(32, 1)
+# ...
+```
+
+**Experiment 1**
+
+For the first experiment, I simply fed the dataset's data into the model and started a training run. The results were not so great: 70% accuracy on training set and 70% accuracy on test set.
+
+[ ](<$image.asset("experiment_1.png").attrs('big-img')>)
+
+**Experiment 2**
+
+For the second experiment, I normalized the training data using the z-transform equation. This lead to a jump in both training and test accuracy (85% and 80).
+
+[ ](<$image.asset("experiment_2.png").attrs('big-img')>)
+
+**Experiment 3**
+
+For the third experiment, I added batch normalization to each hidden layer of the network. This produced another jump in training accuracy (to 95%), while maintaining performance on the test set.
+
+[ ](<$image.asset("experiment_3.png").attrs('big-img')>)
+
+I'm not sure if these parameters and architecture I chose for this data set were the best ones, but they were good enough to observe the effects of data and batch normalization, which was the goal.
